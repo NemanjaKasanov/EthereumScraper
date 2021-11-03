@@ -1,2 +1,2 @@
 # EthereumScraper
-EthereumScraping application
+EthereumScraping Laravel application
