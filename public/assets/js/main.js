@@ -2,7 +2,7 @@ const baseUrl = 'http://localhost/EthereumScraper/public/';
 
 $(document).ready(function () {
 
-    console.log('WORKS');
+    hideLoadingIcon();
 
     let address = '0xaa7a9ca87d3694b5755f213b5d04094b8d0f0a6f';
     // address = 'asdasd';
