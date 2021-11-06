@@ -18,14 +18,20 @@
 
 @section('content')
 
-    <div class="col-12 m-5">
+    <div class="col-12 m-5 d-flex justify-content-center">
+        <div class="col-lg-8 col-sm-12">
 
-        <p class="h1 text-info">Ethereum Scraper</p>
+            <p class="h1 mb-5 text-info">Ethereum Scraper</p>
 
+            <div class="col-12" id="address-information">
+                
+            </div>
+        
+        </div>
     </div>
 
 @endsection
 
 @section('js')
-
+    <script src="{{ asset('assets/js/main.js') }}"></script>
 @endsection
