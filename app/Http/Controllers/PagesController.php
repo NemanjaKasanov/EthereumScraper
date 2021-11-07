@@ -10,13 +10,10 @@ use Illuminate\Http\Request;
 
 class PagesController extends BaseController
 {
-    private $ethereum;
-
-    public function __construct(Address $ethereum)
+    public function __construct()
     {
         parent::__construct();
         $this->data = [];
-        $this->ethereum = $ethereum;
     }
 
     public function index()

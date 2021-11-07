@@ -23,22 +23,17 @@
 
             <p class="h1 mb-5 text-info">Ethereum Scraper</p>
 
-            {{-- Form elements --}}
+            @include('partials.form')
 
-            <div class="col-12 text-center p-5 h2" id="loading-icon-container">
-                <lord-icon
-                    src="https://cdn.lordicon.com/ulhdumaq.json"
-                    trigger="loop"
-                    colors="primary:#121331,secondary:#08a88a"
-                    style="width:250px;height:250px">
-                </lord-icon>
-                <p class="h3 text-info">Loading...</p>
+            @include('partials.loading')
+
+            <div class="col-12 mb-5" id="address-information">
+                {{-- Address wallet information display --}}
             </div>
 
-            <div class="col-12" id="address-information">
-
-                {{-- Address wallet information --}}
-                
+            <div class="col-12 mb-5" id="transactions-information">
+                {{-- Transactions associated with the address display --}}
+                @include('partials.transactions-information')
             </div>
         
         </div>
