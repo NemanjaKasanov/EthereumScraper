@@ -2,20 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Address;
-use App\Models\Block;
-use App\Models\Ethereum;
-use App\Models\Transaction;
 use Illuminate\Http\Request;
 
-class PagesController extends BaseController
+class PagesController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        $this->data = [];
-    }
-
     public function index()
     {
         // OriginTrail
@@ -24,15 +14,21 @@ class PagesController extends BaseController
         // Coinbase 1
         // dd($this->ethereum->getAddressInformation('0x71660c4005ba85c37ccec55d0c4493e66fe775d3'));
 
-        // dd($this->ethereum->test());
-
-        return view('pages.home', $this->data);
+        return view('pages.home');
     }
 
     public function addressInformationHtml(Request $request)
     {
         $html = view('partials.address-information', [
             'address' => $request->input('address_information')
+        ])->render();
+        return response()->json($html);
+    }
+
+    public function transactionsTableHtml(Request $request)
+    {
+        $html = view('partials.transactions-information', [
+            'transactions' => $request->input('transactions')['result']
         ])->render();
         return response()->json($html);
     }

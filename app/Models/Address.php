@@ -6,30 +6,20 @@ use Goutte\Client;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Address extends Ethereum
+class Address extends Model
 {
     use HasFactory;
 
-    public function __construct()
+    private $client;
+    private $website_address;
+    private $path;
+
+    public function __construct(Client $client)
     {
         parent::__construct();
+        $this->client = $client;
+        $this->website_address = 'https://etherscan.io';
         $this->path = '/address';
-    }
-
-    public function test()
-    {
-        $page_address = 'https://etherscan.io/address';
-        $ethereum_address = '/0xaa7a9ca87d3694b5755f213b5d04094b8d0f0a6f';
-        $full_page_address = $page_address . $ethereum_address;
-        $page = $this->client->request('GET', $full_page_address);
-
-        // Crawling options, methods, selectors
-        $data = $page->filter('#mainaddress')->text();
-        $page->filter('#id')->each(function ($element) {
-            // goes through each element of the tag
-        });
-
-        return $data;
     }
 
     public function getAddressInformation($address)

@@ -18,8 +18,8 @@
 
 @section('content')
 
-    <div class="col-12 m-5 d-flex justify-content-center">
-        <div class="col-lg-8 col-sm-12" id="page-content-wrapper">
+    <div class="row m-5 d-flex justify-content-center">
+        <div class="col-lg-10 col-sm-12" id="page-content-wrapper">
 
             <p class="h1 mb-5 text-info">Ethereum Scraper</p>
 
@@ -27,13 +27,14 @@
 
             @include('partials.loading')
 
-            <div class="col-12 mb-5" id="address-information">
-                {{-- Address wallet information display --}}
-            </div>
-
-            <div class="col-12 mb-5" id="transactions-information">
-                {{-- Transactions associated with the address display --}}
-                @include('partials.transactions-information')
+            <div class="col-12" id="data-containers">
+                <div class="col-12 mb-5" id="address-information">
+                    {{-- Address wallet information display --}}
+                </div>
+    
+                <div class="col-12 mb-5" id="transactions-information">
+                    {{-- Transactions associated with the address display --}}
+                </div>
             </div>
         
         </div>
