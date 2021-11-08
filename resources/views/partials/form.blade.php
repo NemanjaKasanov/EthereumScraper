@@ -18,7 +18,7 @@
             <div class="col text-center">
                 <div class="col-12">
                     <button type="submit" 
-                        class="btn btn-info text-light col-12" 
+                        class="btn btn-info text-light col-12 prevent-default" 
                         id="submit-button">Search</button>
                 </div>
             </div>

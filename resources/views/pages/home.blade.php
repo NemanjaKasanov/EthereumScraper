@@ -21,7 +21,16 @@
     <div class="row m-5 d-flex justify-content-center">
         <div class="col-lg-10 col-sm-12" id="page-content-wrapper">
 
-            <p class="h1 mb-5 text-info">Ethereum Scraper</p>
+            <div class="col-12 mb-5 d-flex justify-content-between">
+                <div>
+                    <p class="h1 text-info">Ethereum Scraper</p>
+                </div>
+                <div>
+                    <a href="#" class="text-info h1 prevent-default" id="info-icon">
+                        <i class="fa fa-info-circle"></i>
+                    </a>
+                </div>
+            </div>
 
             @include('partials.form')
 
@@ -35,6 +44,15 @@
                 <div class="col-12 mb-5" id="transactions-information">
                     {{-- Transactions associated with the address display --}}
                 </div>
+                
+                <div class="col-12 text-center" id="coin-animation">
+                    <lord-icon
+                        src="https://cdn.lordicon.com/qhviklyi.json"
+                        trigger="loop"
+                        colors="primary:#121331,secondary:#9ce5f4"
+                        style="width:250px;height:250px">
+                    </lord-icon>
+                </div>
             </div>
         
         </div>
@@ -43,6 +61,7 @@
 @endsection
 
 @section('js')
+    <script src="{{ asset('assets/js/modal.js') }}"></script>
     <script src="{{ asset('assets/js/loading.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>

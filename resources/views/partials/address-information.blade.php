@@ -19,7 +19,16 @@
     
     @else
     
-    <p class="mt-4">Address <i>{{ $address['address'] }}</i> is invalid.</p>
+    <p class="mt-4 text-danger">Address <i>{{ $address['address'] }}</i> is invalid.</p>
+    <p>
+        The correct format of the address should be something like this:
+        <br/>
+        <i>0xEA674fdDe714fd979de3EdF0F56AA9716B898ec8</i>
+    </p>
+    <p>
+        For more information on Ethereum addresses see this 
+        <a href="https://info.etherscan.com/what-is-an-ethereum-address/" target="_blank">link</a>.
+    </p>
     
     @endif
 </div>

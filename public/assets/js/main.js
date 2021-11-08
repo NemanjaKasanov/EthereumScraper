@@ -2,29 +2,43 @@ const baseUrl = 'http://localhost/EthereumScraper/public/';
 
 $(document).ready(function () {
 
-    // setTimeout(function () {
-    //     showLoadingIcon();
-    // }, 5000);
+    hideLoadingIcon();
 
-    // hideLoadingIcon();
-
-    $('#submit-button').click(function (event) {
-        event.preventDefault();
-
-        const address = $('#address').val();
-        const block = $('#block').val();
-
-        getAddressInformation(address);
+    $('#info-icon').click(function () {
+        let modalTitle = 'Ethereum Scraper Help';
+        let modalContent = `
+            <div class="col-12">
+                <p>Insert an Ethereum Address to get information on transactions associated with the given address.</p>
+                <p>Additionaly, you can input an Ethereum Block number, and the program will display transactions from that block to the current.</p>
+            </div>`;
+        showModal(modalContent, modalTitle);
     });
 
-    let address = '0xaa7a9ca87d3694b5755f213b5d04094b8d0f0a6f';
-    // let address = '0x71660c4005ba85c37ccec55d0c4493e66fe775d3';
-    let block = 13572327;
+    $('#submit-button').click(function () {
+        search();
+    });
 
-    getAddressInformation(address);
-    getTransactions(address, block, 20, 1);
+    // let address = '0xaa7a9ca87d3694b5755f213b5d04094b8d0f0a6f';
+    // let address = '0x71660c4005ba85c37ccec55d0c4493e66fe775d3';
+    // let block = 13572327;
+    // getAddressInformation(address);
+    // getTransactions(address, block, 20, 1);
 
 });
+
+function search() {
+    const address = $('#address').val();
+    const block = $('#block').val();
+    const perPage = 20;
+    const pageNumber = 1;
+
+    if (address != '') {
+        hideCoinsAnimation();
+        showLoadingIcon();
+        getAddressInformation(address);
+        getTransactions(address, block, perPage, pageNumber);
+    }
+}
 
 function getAddressInformation(address) {
     $.ajax({
@@ -66,7 +80,9 @@ function getTransactions(address, fromBlock, perPage, pageNumber) {
         method: 'GET',
         success: function (transactions) {
             console.log(transactions);
-            displayTransactionsData(transactions);
+            if (transactions.status == 1) {
+                displayTransactionsData(transactions);
+            }
         },
         error: function (err) {
             console.log(err);

@@ -21,6 +21,14 @@ class TransactionsController extends Controller
         $per_page = $request->input('per_page');
         $page_number = $request->input('page_number');
 
+        // if ($from_block) {
+        $from_block == 1;
+        // }
+
+        return response()->json([
+            $address, $from_block, $per_page, $page_number
+        ]);
+
         $response = $this->transactions->getTransactions($address, $from_block, $per_page, $page_number);
         return response()->json($response);
     }

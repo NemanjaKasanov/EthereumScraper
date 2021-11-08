@@ -5,6 +5,8 @@
 
 <body>
 
+    @include('partials.modal')
+
     @yield('content')
 
     @include('includes.scripts')
