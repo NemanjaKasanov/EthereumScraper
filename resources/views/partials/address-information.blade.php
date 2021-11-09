@@ -23,7 +23,7 @@
     <p>
         The correct format of the address should be something like this:
         <br/>
-        <i>0xEA674fdDe714fd979de3EdF0F56AA9716B898ec8</i>
+        <i>0xea674fdde714fd979de3edf0f56aa9716b898ec8</i>
     </p>
     <p>
         For more information on Ethereum addresses see this 

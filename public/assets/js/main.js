@@ -3,6 +3,7 @@ const baseUrl = 'http://localhost/EthereumScraper/public/';
 $(document).ready(function () {
 
     hideLoadingIcon();
+    hideContainers();
 
     $('#info-icon').click(function () {
         let modalTitle = 'Ethereum Scraper Help';
@@ -14,7 +15,15 @@ $(document).ready(function () {
         showModal(modalContent, modalTitle);
     });
 
-    $('#submit-button').click(function () {
+    $('#submit-button').click(function () { 
+        _pageNumber = 1;
+        $('#page-number').html(_pageNumber);
+        search(); 
+    });
+
+    $(document).on('change', '#per-page', function () {
+        const perPage = $('#per-page').val();
+        _perPage = perPage;
         search();
     });
 
@@ -29,8 +38,8 @@ $(document).ready(function () {
 function search() {
     const address = $('#address').val();
     const block = $('#block').val();
-    const perPage = 20;
-    const pageNumber = 1;
+    const perPage = _perPage;
+    const pageNumber = _pageNumber;
 
     if (address != '') {
         hideCoinsAnimation();
@@ -45,6 +54,7 @@ function getAddressInformation(address) {
         url: baseUrl + 'getAddressInformation/' + address,
         method: 'GET',
         success: function (addressInformation) {
+            console.log(addressInformation)
             displayAddressInformation(addressInformation);
         },
         error: function (err) {
@@ -54,6 +64,13 @@ function getAddressInformation(address) {
 }
 
 function displayAddressInformation(addressInformation) {
+    if (addressInformation.total_transactions) {
+        const totalTransactionsFormatted = addressInformation.total_transactions.toLocaleString('en');
+        $('#total-transactions').html(totalTransactionsFormatted);
+        _totalTransactions = addressInformation.total_transactions;
+        $('#get-total-transactions').val(_totalTransactions);
+    }
+
     $.ajax({
         url: baseUrl + 'addressInformationHtml',
         method: 'POST',
@@ -64,6 +81,7 @@ function displayAddressInformation(addressInformation) {
         },
         success: function (html) {
             hideLoadingIcon();
+            showContainers();
             $('#address-information').html(html);
         },
         error: function (err) {
@@ -101,6 +119,7 @@ function displayTransactionsData(transactions) {
         },
         success: function (html) {
             hideLoadingIcon();
+            showContainers();
             $('#transactions-information').html(html);
         },
         error: function (err) {

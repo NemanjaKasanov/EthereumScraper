@@ -19,7 +19,3 @@ function showModal(content, title = 'Ethereum Scraper') {
 function hideModal() {
     $('#modal').modal('hide');
 }
-
-function hideCoinsAnimation() {
-    $('#coin-animation').hide();
-}

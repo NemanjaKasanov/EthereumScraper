@@ -40,6 +40,7 @@ class Address extends Model
         $contract_overview_card_object = $this->getContractOverviewCardObject($page_object);
         $balance = $this->getBalance($contract_overview_card_object);
         $value = $this->getValue($contract_overview_card_object);
+        $total_transactions = $this->getTotalTransactionsNumber($page_object);
 
         return [
             'address' => $address,
@@ -47,6 +48,7 @@ class Address extends Model
             'balance' => $balance,
             'value' => $value,
             'title' => $page_title,
+            'total_transactions' => $total_transactions,
             'success' => true,
         ];
     }
@@ -89,5 +91,23 @@ class Address extends Model
     private function getValue($contract_overview_card_object)
     {
         return $contract_overview_card_object->eq(1)->filter('div')->eq(2)->text();
+    }
+
+    private function getTotalTransactionsNumber($page_object)
+    {
+        $transactions_number_raw = $page_object->filter('#transactions')
+            ->children()
+            ->first()
+            ->filter('p')
+            ->first()
+            ->filter('a')
+            ->first()
+            ->text();
+        return $this->convertCommaSeparatedNumberStringToInt($transactions_number_raw);
+    }
+
+    private function convertCommaSeparatedNumberStringToInt($string)
+    {
+        return (int)str_replace(',', '', $string);
     }
 }
