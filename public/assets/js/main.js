@@ -6,7 +6,7 @@ $(document).ready(function () {
     hideContainers();
 
     $('#info-icon').click(function () {
-        let modalTitle = 'Ethereum Scraper Help';
+        let modalTitle = 'Ethereum Scraper Help:';
         let modalContent = `
             <div class="col-12">
                 <p>Insert an Ethereum Address to get information on transactions associated with the given address.</p>
@@ -25,6 +25,33 @@ $(document).ready(function () {
         const perPage = $('#per-page').val();
         _perPage = perPage;
         search();
+    });
+
+    $(document).on('click', '.txn-hash-link', function () {
+        const hash = $(this).data('hash');
+        const transactionIndex = $(this).data('tnxindex');
+        const blockHash = $(this).data('blockhash');
+        const blockNumber = $(this).data('blocknumber');
+        const timestamp = $(this).data('timestamp');
+        const from = $(this).data('from');
+        const to = $(this).data('to');
+        const gasPrice = $(this).data('gasprice');
+        const gasUsed = $(this).data('gasused');
+        const value = $(this).data('value');
+
+        const transaction = {
+            hash: hash,
+            transactionIndex: transactionIndex,
+            blockHash: blockHash,
+            blockNumber: blockNumber,
+            timestamp: timestamp,
+            from: from,
+            to: to,
+            gasPrice: gasPrice,
+            gasUsed: gasUsed,
+            value: value,
+        };
+        showTransactionInformationModal(transaction);
     });
 
     // let address = '0xaa7a9ca87d3694b5755f213b5d04094b8d0f0a6f';
@@ -121,6 +148,25 @@ function displayTransactionsData(transactions) {
             hideLoadingIcon();
             showContainers();
             $('#transactions-information').html(html);
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+
+function showTransactionInformationModal(transaction) {
+    $.ajax({
+        url: baseUrl + 'getTransactionModalContent',
+        method: 'POST',
+        dataType: 'JSON',
+        data: {
+            _token: $('meta[name="csrf-token"]').attr('content'),
+            transaction: transaction
+        },
+        success: function (html) {
+            let modalTitle = 'Transaction details:';
+            showModal(html, modalTitle);
         },
         error: function (err) {
             console.log(err);

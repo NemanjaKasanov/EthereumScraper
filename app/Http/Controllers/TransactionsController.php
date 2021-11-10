@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TransactionsController extends Controller
@@ -38,5 +39,35 @@ class TransactionsController extends Controller
             return true;
         }
         return false;
+    }
+
+    public function getTransactionModalContent(Request $request)
+    {
+        $transaction = $request->input('transaction');
+        $transaction['value'] = $this->convertNumberToEther($transaction['value']);
+        $transaction['gasPrice'] = $this->convertNumberToEther($transaction['gasPrice']);
+        $transaction['gasUsed'] = $this->convertNumberToEther($transaction['gasUsed']);
+        $transaction['timestamp'] = $this->timestampToDateTimeString($transaction['timestamp']);
+
+        $html_response = view(
+            'partials.transaction-details',
+            [
+                'transaction' => $transaction
+            ]
+        )->render();
+
+        return response()->json($html_response);
+    }
+
+    public static function convertNumberToEther($number)
+    {
+        $ether = floatval(substr_replace((string)$number, '.', 1, 0));
+        return $ether;
+    }
+
+    public static function timestampToDateTimeString($timestamp)
+    {
+        $date_string = Carbon::createFromTimestamp($timestamp)->toDateTimeString();
+        return $date_string;
     }
 }

@@ -21,10 +21,6 @@ $(document).ready(function () {
             _pageNumber = 1;
         }
 
-        // -----------------------------------
-        // dodati do koje strane je moguce ici
-        // -----------------------------------
-
         search();
         $('#page-number').html(_pageNumber);
     });

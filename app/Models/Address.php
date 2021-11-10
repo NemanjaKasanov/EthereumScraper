@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Exception;
 use Goutte\Client;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -71,8 +72,12 @@ class Address extends Model
 
     private function getAddressTag($page_object)
     {
-        return $page_object->filter('.u-label.u-label--secondary.text-dark.font-size-1.rounded.py-1.px-3')
-            ->text();
+        try {
+            return $page_object->filter('.u-label.u-label--secondary.text-dark.font-size-1.rounded.py-1.px-3')
+                ->text();
+        } catch (Exception $e) {
+            return "No Tag";
+        }
     }
 
     private function getContractOverviewCardObject($page_object)

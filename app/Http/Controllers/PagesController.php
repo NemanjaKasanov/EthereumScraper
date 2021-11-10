@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ethereum;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -28,7 +29,8 @@ class PagesController extends Controller
     public function transactionsTableHtml(Request $request)
     {
         $html = view('partials.transactions-information', [
-            'transactions' => $request->input('transactions')['result']
+            'transactions' => $request->input('transactions')['result'],
+            'ether_price' => Ethereum::getEtherPriceInDollars()
         ])->render();
         return response()->json($html);
     }

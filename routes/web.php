@@ -24,3 +24,4 @@ Route::get('/getTransactions', [TransactionsController::class, 'getTransactions'
 
 Route::post('/addressInformationHtml', [PagesController::class, 'addressInformationHtml']);
 Route::post('/transactionsTableHtml', [PagesController::class, 'transactionsTableHtml']);
+Route::post('/getTransactionModalContent', [TransactionsController::class, 'getTransactionModalContent']);
