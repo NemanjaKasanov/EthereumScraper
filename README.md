@@ -1,6 +1,5 @@
 # EthereumScraper
 
-
 ## About
 EthereumScraper is an application that scrapes data on Ethereum addresses and displays it.
 
@@ -29,31 +28,41 @@ php artisan key:generate
 * Open http://localhost/EthereumScraper/public/ in your web browser
 
 
+
 # Details About The Project
 
+## On entering the web page
+![name-of-you-image](https://github.com/NemanjaKasanov/EthereumScraper/blob/main/images/2021-11-11_23-15.png?raw=true)
+This is how the page looks when you enter.
+Insert an address, and optionaly a block number to show information.
+Clicking on the info sign in the upper right corner opens a modal with instructions.
 
+## Inputting an invalid address
+![name-of-you-image](https://github.com/NemanjaKasanov/EthereumScraper/blob/main/images/2021-11-11_23-23.png?raw=true)
+This is the display shown when the given address was invalid.
 
+## Address information display
+![name-of-you-image](https://github.com/NemanjaKasanov/EthereumScraper/blob/main/images/2021-11-11_23-25.png?raw=true)
+![name-of-you-image](https://github.com/NemanjaKasanov/EthereumScraper/blob/main/images/2021-11-11_23-25_1.png?raw=true)
+This is how it looks like when the address in the form was valid and scraping was successfull.
 
+Here you can find Laravel models that get the data:
+* https://github.com/NemanjaKasanov/EthereumScraper/blob/main/app/Models/Address.php
+* https://github.com/NemanjaKasanov/EthereumScraper/blob/main/app/Models/Transaction.php
+* https://github.com/NemanjaKasanov/EthereumScraper/blob/main/app/Models/Ethereum.php
 
+Here you can find Laravel Controllers:
+* https://github.com/NemanjaKasanov/EthereumScraper/blob/main/app/Http/Controllers/PagesController.php
+* https://github.com/NemanjaKasanov/EthereumScraper/blob/main/app/Http/Controllers/AddressesController.php
+* https://github.com/NemanjaKasanov/EthereumScraper/blob/main/app/Http/Controllers/TransactionsController.php
 
+Here is the JS code woking on displays:
+* https://github.com/NemanjaKasanov/EthereumScraper/blob/main/public/assets/js/main.js
+* https://github.com/NemanjaKasanov/EthereumScraper/blob/main/public/assets/js/loading.js
+* https://github.com/NemanjaKasanov/EthereumScraper/blob/main/public/assets/js/modal.js
+* https://github.com/NemanjaKasanov/EthereumScraper/blob/main/public/assets/js/pagination.js
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+##
+![name-of-you-image](https://github.com/NemanjaKasanov/EthereumScraper/blob/main/images/2021-11-11_23-30.png?raw=true)
+When the user clicks on the Txn Hash link in the table, this modal will be diplayed.
+It contains information on the selected transaction in more detail than the display in the table.
