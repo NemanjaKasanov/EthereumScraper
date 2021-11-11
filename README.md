@@ -4,7 +4,7 @@
 ## About
 EthereumScraper is an application that scrapes data on Ethereum addresses and displays it.
 
-The user inputs an address into the from and the app scrapes the data on the given address, displaying basic infomation (tag, balance, price of ETH balance, total transactions and a table containing paginated transactions data). Additionally, user can input a block number, which will limit transactions displayed, showing only transactions with block number higher than the given one.
+The user inputs an address into the from and the app scrapes the data on the given address, displaying basic infomation (tag, balance, price of ETH balance, total transactions and a table containing paginated transactions). Additionally, user can input a block number, which will limit transactions displayed, showing only transactions from the given block to the current.
 
 Etherscan API was used for getting information on transactions, due to the hight number of transactions certain addresses can have.
 
