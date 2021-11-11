@@ -92,6 +92,9 @@ function displayAddressInformation(addressInformation) {
         _totalTransactions = addressInformation.total_transactions;
         $('#get-total-transactions').val(_totalTransactions);
     }
+    else {
+        $('#total-transactions').html('0');
+    }
 
     $.ajax({
         url: baseUrl + 'addressInformationHtml',
