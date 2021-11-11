@@ -61,7 +61,17 @@ class TransactionsController extends Controller
 
     public static function convertNumberToEther($number)
     {
-        $ether = floatval(substr_replace((string)$number, '.', 1, 0));
+        $new_number = $number;
+        $number_length = strlen((string)$number);
+        if ($number_length < 19) {
+            $number_of_zeros_to_add = 19 - $number_length;
+            $zeros_string = '';
+            for ($i = 0; $i < $number_of_zeros_to_add; $i++) {
+                $zeros_string .= '0';
+            }
+            $new_number = $zeros_string . $number;
+        }
+        $ether = floatval(substr_replace((string)$new_number, '.', 1, 0));
         return $ether;
     }
 

@@ -14,6 +14,7 @@
             data-gasPrice="{{ $transaction['gasPrice'] }}"
             data-gasUsed="{{ $transaction['gasUsed'] }}"
             data-value="{{ $transaction['value'] }}"
+            data-tnxFee="{{  \App\Http\Controllers\TransactionsController::convertNumberToEther($transaction['gasUsed'] * $transaction['gasPrice'])}}"
         >
             {{ $transaction['hash'] }}
         </a>
@@ -31,7 +32,7 @@
         ${{ number_format(\App\Http\Controllers\TransactionsController::convertNumberToEther($transaction['value']) * $ether_price ) }}
     </td>
     <td>
-        {{ \App\Http\Controllers\TransactionsController::convertNumberToEther($transaction['gasUsed']) * \App\Http\Controllers\TransactionsController::convertNumberToEther($transaction['gasPrice']) }}
+        {{ \App\Http\Controllers\TransactionsController::convertNumberToEther($transaction['gasUsed'] * $transaction['gasPrice']) }}
     </td>
 </tr>
 

@@ -38,6 +38,7 @@ $(document).ready(function () {
         const gasPrice = $(this).data('gasprice');
         const gasUsed = $(this).data('gasused');
         const value = $(this).data('value');
+        const tnxFee = $(this).data('tnxfee');
 
         const transaction = {
             hash: hash,
@@ -50,15 +51,10 @@ $(document).ready(function () {
             gasPrice: gasPrice,
             gasUsed: gasUsed,
             value: value,
+            tnxFee: tnxFee,
         };
         showTransactionInformationModal(transaction);
     });
-
-    // let address = '0xaa7a9ca87d3694b5755f213b5d04094b8d0f0a6f';
-    // let address = '0x71660c4005ba85c37ccec55d0c4493e66fe775d3';
-    // let block = 13572327;
-    // getAddressInformation(address);
-    // getTransactions(address, block, 20, 1);
 
 });
 

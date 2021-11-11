@@ -30,7 +30,7 @@
         <b>Date:</b> {{ $transaction['timestamp'] }}
     </p>
     <p>
-        <b>Tnx Fee:</b> {{ $transaction['gasUsed'] * $transaction['gasPrice'] }}
+        <b>Tnx Fee:</b> {{ $transaction['tnxFee'] }}
     </p>
     <p class="text-info h4">
         <b>Value:</b> {{ $transaction['value'] }} Ether

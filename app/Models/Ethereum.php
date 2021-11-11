@@ -21,8 +21,4 @@ class Ethereum extends Model
         $ethereum_price = str_replace(',', '', $ethereum_price);
         return floatval($ethereum_price);
     }
-
-    public static function calculateEtherPriceInDollars($ether)
-    {
-    }
 }
