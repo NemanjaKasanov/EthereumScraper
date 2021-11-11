@@ -33,9 +33,9 @@
         <b>Tnx Fee:</b> {{ $transaction['tnxFee'] }}
     </p>
     <p class="text-info h4">
-        <b>Value:</b> {{ $transaction['value'] }} Ether
+        Value: <b>{{ $transaction['value'] }} ETH</b>
     </p>
     <p class="text-info h4">
-        <b>Price:</b> ${{ number_format($transaction['value'] * \App\Models\Ethereum::getEtherPriceInDollars()) }}
+        Price: <b>${{ number_format($transaction['value'] * \App\Models\Ethereum::getEtherPriceInDollars()) }}</b>
     </p>
 </div>

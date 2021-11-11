@@ -26,7 +26,7 @@
         {{ \App\Http\Controllers\TransactionsController::timestampToDateTimeString($transaction['timeStamp']) }}
     </td>
     <td class="font-weight-bold">
-        {{ \App\Http\Controllers\TransactionsController::convertNumberToEther($transaction['value']) }} Ether
+        {{ \App\Http\Controllers\TransactionsController::convertNumberToEther($transaction['value']) }} ETH
     </td>
     <td class="font-weight-bold">
         ${{ number_format(\App\Http\Controllers\TransactionsController::convertNumberToEther($transaction['value']) * $ether_price ) }}
