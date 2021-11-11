@@ -1,6 +1,7 @@
 let _totalTransactions = 1;
 let _perPage = 20;
 let _pageNumber = 1;
+let _hasNextPage = false;
 
 $(document).ready(function () {
 
@@ -11,7 +12,9 @@ $(document).ready(function () {
             _pageNumber = --_pageNumber;
         }
         else if (direction == 'next') {
-            _pageNumber = ++_pageNumber;
+            if (_hasNextPage) {
+                _pageNumber = ++_pageNumber;
+            }
         }
         else {
             _pageNumber = 1;

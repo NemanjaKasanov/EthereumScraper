@@ -30,6 +30,7 @@ class TransactionsController extends Controller
         }
 
         $response = $this->transactions->getTransactions($address, $from_block, $per_page, $page_number);
+        $response->next_element = $this->transactions->getTransactions($address, $from_block, $per_page, $page_number + 1);
         return response()->json($response);
     }
 

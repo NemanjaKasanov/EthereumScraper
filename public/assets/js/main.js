@@ -77,7 +77,6 @@ function getAddressInformation(address) {
         url: baseUrl + 'getAddressInformation/' + address,
         method: 'GET',
         success: function (addressInformation) {
-            console.log(addressInformation)
             displayAddressInformation(addressInformation);
         },
         error: function (err) {
@@ -120,9 +119,14 @@ function getTransactions(address, fromBlock, perPage, pageNumber) {
         url: url,
         method: 'GET',
         success: function (transactions) {
-            console.log(transactions);
             if (transactions.status == 1) {
+                if (transactions.next_element.status == "1") 
+                    _hasNextPage = true;
+                else 
+                    _hasNextPage = false;
+
                 displayTransactionsData(transactions);
+                console.log(transactions)
             }
         },
         error: function (err) {
